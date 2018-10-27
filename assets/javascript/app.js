@@ -6,7 +6,7 @@ let userInput = "";
 
 function displayGif(){
   let actor = $(this).attr('data-name');
-  let queryURL = "http://api.giphy.com/v1/gifs/search?q="+actor+"&api_key="+key+"&limit="+limit;
+  let queryURL = "https://api.giphy.com/v1/gifs/search?q="+actor+"&api_key="+key+"&limit="+limit;
 
   $('#gifDis').empty();
 
