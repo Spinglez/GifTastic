@@ -2,6 +2,7 @@
 let key = "X1gSRmYDFMp8L5GyL1lSRpk0NZkvl5hL";
 let topic = ["Wesley Snipes", "Arnold Schwarzenegger","Robin Williams"];
 let limit = 10;
+let userInput = "";
 
 function displayGif(){
   let actor = $(this).attr('data-name');
@@ -61,10 +62,11 @@ function disButtons() {
 
 $('#addBtn').on('click', function(event){
   event.preventDefault();
-  let userInput = $('<input>').val().trim();
+  userInput = $('#usrIn').val().trim();
+  $('#usrIn').val('');
   console.log(userInput);
-  // topic.push(userInput);
-  // disButtons();
+  topic.push(userInput);
+  disButtons();
 });
 
 $(document).on("click", ".actor", displayGif);
