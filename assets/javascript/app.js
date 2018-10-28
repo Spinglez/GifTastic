@@ -1,9 +1,11 @@
 
+// Declaring Variables some are for ease of use (key)0
 let key = "X1gSRmYDFMp8L5GyL1lSRpk0NZkvl5hL";
-let topic = ["Wesley Snipes", "Arnold Schwarzenegger","Robin Williams"];
+let topic = ["Wesley Snipes", "Arnold Schwarzenegger","Jean Claude Van Dam"];
 let limit = 10;
 let userInput = "";
 
+//  Function to display the gifs TODO add a button appended at the end to load more gifs
 function displayGif(){
   let actor = $(this).attr('data-name');
   let queryURL = "https://api.giphy.com/v1/gifs/search?q="+actor+"&api_key="+key+"&limit="+limit;
@@ -30,10 +32,11 @@ function displayGif(){
     displayDiv.append(p);
     $('#gifDis').prepend(displayDiv);
     }
-    console.log(results);
+    // console.log(results); //this was in for testing purposes
   });
 }
 
+// on-click function to play or pause gif's
 $(document).on('click','.gifGo', function(){
   let state = $(this).attr('data-state');
 
@@ -47,7 +50,7 @@ $(document).on('click','.gifGo', function(){
 
 });
 
-
+// display button function that clears the div with all buttons then displays them
 function disButtons() {
   $('#btnDis').empty();
 
@@ -60,6 +63,7 @@ function disButtons() {
   }
 }
 
+// add button on-click listener to add new user inputted buttons
 $('#addBtn').on('click', function(event){
   event.preventDefault();
   userInput = $('#usrIn').val().trim();
@@ -69,5 +73,7 @@ $('#addBtn').on('click', function(event){
   disButtons();
 });
 
+// using an on click for the document since all the content is dynamic
 $(document).on("click", ".actor", displayGif);
+// running the button display on page load.
 disButtons();
